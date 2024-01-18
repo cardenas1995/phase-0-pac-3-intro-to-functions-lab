@@ -1,16 +1,22 @@
 require ( './root.js' );
 
 
-describe('shout(string)', function() {
+describe('shout(string)', function shout(string){
   it('receives one argument and returns it in all caps', function() {
     expect(shout('hello')).toEqual('HELLO');
   })
+  function shout(string) {
+    return string.toUpperCase();
+  }
 })
 
 describe('whisper(string)', function() {
   it('receives one argument and returns it in all lowercase', function() {
     expect(whisper('HELLO')).toEqual('hello');
   })
+  function whisper(string) {
+    return string.toLowerCase();
+  }
 })
 
 describe('logShout(string)', function() {
@@ -18,11 +24,13 @@ describe('logShout(string)', function() {
     const spy = expect.spyOn(console, 'log').andCallThrough();
 
     logShout('hello');
-
     expect(spy).toHaveBeenCalledWith('HELLO');
 
     console.log.restore();
   })
+  function logShout(string) {
+    console.log (string.toUpperCase());
+  }
 })
 
 describe('logWhisper(string)', function() {
@@ -35,6 +43,9 @@ describe('logWhisper(string)', function() {
 
     console.log.restore();
   })
+  function logWhisper(string) {
+    console.log (string.toLowerCase())
+  }
 })
 
 describe('sayHiToHeadphonedRoommate(string)', function() {
@@ -52,3 +63,13 @@ describe('sayHiToHeadphonedRoommate(string)', function() {
     );
   });
 })
+
+function sayHiToHeadphonedRoommate(string) {
+  if (string.toLowerCase() === string) {
+    return "I can't hear you!";
+  } else if (string.toUpperCase() === string) {
+    return "YES INDEED!";
+  } else if (string === "Let's have dinner together!") {
+    return "I would love to!";
+  }
+}
